@@ -8,7 +8,9 @@ To install and execute the script do the following commands
   - 'chmod +x setup.sh'
   - 'python Wifi-Jammer.py'
  
-This script only works in linux
+This script only works in linux.
+
+Have fun with the Script :)
 
 # Legal Disclaimer
 
