@@ -14,7 +14,7 @@ This script only works in linux
 
 DO NOT USE THIS SCRIPT FOR ILLEGAL PURPOSES!
 
-I WILL NOT TAKE ANY RESPONSIBILITY IF THIS TOOL I USED FOR ILLEGAL PURPOSES!
+I WILL NOT TAKE ANY RESPONSIBILITY IF THIS TOOL IS USED FOR ILLEGAL PURPOSES!
 
 You should not use this script outside of your personal network, you are responsible for your own acts.
 Wifi Jamming is strictly prohibithed in most countries.
