@@ -1,5 +1,5 @@
 # Wifi-Jammer
-Simple wifi jammer with aircrack-ng
+Simple wifi jammer with python and aircrack-ng
 
 To install and execute the script do the following commands
 
