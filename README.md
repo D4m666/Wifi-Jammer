@@ -12,9 +12,9 @@ This script only works in linux
 
 # Legal Disclaimer
 
-_DO NOT USE THIS SCRIPT FOR ILLEGAL PURPOSES!
+DO NOT USE THIS SCRIPT FOR ILLEGAL PURPOSES!
 
-_I WILL NOT TAKE ANY RESPONSIBILITY IF THIS TOOL I USED FOR ILLEGAL PURPOSES!
+I WILL NOT TAKE ANY RESPONSIBILITY IF THIS TOOL I USED FOR ILLEGAL PURPOSES!
 
 You should not use this script outside of your personal network, you are responsible for your own acts.
 Wifi Jamming is strictly prohibithed in most countries.
