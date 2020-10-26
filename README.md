@@ -6,6 +6,7 @@ To install and execute the script do the following commands
   - 'git clone https://github.com/D4m666/Wifi-Jammer'
   - 'cd Wifi-Jammer'
   - 'chmod +x setup.sh'
+  - './setup.sh'
   - 'python Wifi-Jammer.py'
  
 This script only works in linux.
