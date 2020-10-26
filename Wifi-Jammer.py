@@ -1,5 +1,4 @@
-import os, sys, time, subprocess, datetime
-from scapy.all import *
+import os, sys, time, subprocess
 from pyfiglet import Figlet
 
 
