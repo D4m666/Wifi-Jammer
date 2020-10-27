@@ -228,6 +228,7 @@ def main():
 	elif inp == '4':
 		print("  Closing..")
 		time.sleep(2)
+		os.system('clear')
 		sys.exit()
 		
 	else:
