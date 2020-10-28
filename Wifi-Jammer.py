@@ -1,7 +1,15 @@
 import os, sys, time, subprocess
 from pyfiglet import Figlet
+from color import Color
 
 
+##############################
+# TO DO
+#check if the user entered the interface correctly
+#
+#
+#
+##################################
 
 ################################################
 #Template
@@ -10,16 +18,16 @@ def template():
 	f = Figlet(font='epic')
 	g = Figlet(font='straight')
 	os.system('clear')
+	Color.pe("{R}")
 	print f.renderText('Wifi Jammer')
 	print g.renderText('Coded by D4m3')
-	print("DO NOT USE FOR ILLEGAL PURPOSES")
-	print ('\nAutomated Wifi Jammer Tool')
-	print ('')
+	Color.pe("{!}{R} DO NOT USE FOR ILLEGAL PURPOSES{!}")
+	Color.pe('\n  {+} Automated Wifi Jammer Tool{+}\n\n')
 	
 	
 	
 ################################################	
-#set the interface to monitor mode
+#Set the interface to monitor mode
 ################################################
 def startMonitor():
 	try:
@@ -27,7 +35,7 @@ def startMonitor():
 		interface = raw_input('\nChose the interface you want to use: ')
 		template()
 		subprocess.call('ifconfig {} down'.format(interface), shell=True)
-		print('\n Randomizing your MAC adress')
+		print('\nRandomizing your MAC adress\n')
 		os.system('macchanger -r ' + interface)  #restore permanent mac adress
 		subprocess.call('iwconfig {} mode monitor'.format(interface), shell=True)
 		subprocess.call('ifconfig {} up'.format(interface), shell=True)
@@ -42,8 +50,9 @@ def startMonitor():
 ################################################	
 def stopMonitor(inter):
 	try:
+		template()
 		subprocess.call('ifconfig {} down'.format(inter), shell=True)
-		print('\nRestoring your MAC adress')
+		print('\nRestoring your MAC adress\n')
 		os.system('macchanger -p ' + inter)  #restore permanent mac adress
 		subprocess.call('iwconfig {} mode managed'.format(inter), shell=True)
 		subprocess.call('ifconfig {} up'.format(inter), shell=True)
@@ -54,7 +63,7 @@ def stopMonitor(inter):
 
 
 #############################################
-#Jamm all Clientes in a single network
+#Jam all Clientes in a single network
 ##############################################	
 def jamAllCli():
 	template()
@@ -71,10 +80,12 @@ def jamAllCli():
 		
 	except KeyboardInterrupt:
 		print('\n')
+		time.sleep(1)
 		
 		BSSID = raw_input('Enter the BSSID/MAC address of the AP: ')
-		ch = raw_input('Target channel: ')
-		
+		ch = raw_input('Enter the channel the AP is on: ')
+	
+	#Show the user connected devices and change the interface to the specified channel	
 	try:	
 		subprocess.call('airodump-ng -c {} --bssid {} {}'.format(ch, BSSID, interface), shell=True)
 
@@ -97,9 +108,8 @@ def jamAllCli():
 	main()
 		
 		
-	
 ####################################################
-#Jamm a single Client from the network
+#Jam a single Client from the network
 ###################################################
 def jam1Cli():
 	template()
@@ -116,22 +126,23 @@ def jam1Cli():
 		
 	except KeyboardInterrupt:
 		print('\n')
-	
-	
+		time.sleep(1)
 	
 	BSSID = raw_input('Enter the BSSID/MAC address of the AP: ')
+	ch = raw_input('Enter the channel the AP is on: ')
 	
+	#Show the user connected devices and change the interface to the specified channel
 	try:
-		subprocess.call('airodump-ng --bssid {} {}'.format(BSSID, interface), shell=True)
+		subprocess.call('airodump-ng -c {} --bssid {} {}'.format(ch, BSSID, interface), shell=True)
 	
 	except KeyboardInterrupt:
 		print('\n')
+		time.sleep(1)
 		
 	Client = raw_input('Enter the BSSID/MAC address of the Client: ')
 	
-	
 	template()
-	print('Starting Jammer...')
+	print('Starting Jammer...\n')
 	time.sleep(1)
 	
 	#Start the jammer
@@ -143,13 +154,16 @@ def jam1Cli():
 	
 	stopMonitor(interface)
 	main()
-	
-	
+
+
+###########################################################
+#Ask user wich jammer to load
+###########################################################	
 def wifijam():
 	try:
 		template()
-		print("  Where do you wanna go")
-		print("\n  [1] Deauth Single Client\n  [2] Deauthenticate All Clients\n  [3] Quit")
+		print("  Chose Attack Method")
+		print("\n  [1] Deauthenticate Single Client\n  [2] Deauthenticate All Clients\n  [3] Quit")
 		inp = raw_input("\n  --->  ")
 
 		if inp == '1':
@@ -162,14 +176,17 @@ def wifijam():
 			main()
 	
 		else:
-			print("  Invalid input..")
+			Color.pe("\n{R}  Invalid input...{W}")
 			time.sleep(2)
 			wifijam()
 
 	except KeyboardInterrupt:
 		main()
-		
-	
+
+
+#############################################################
+#Print Legal Information
+#############################################################	
 def LegalInfo():
 	try:
 		template()
@@ -184,7 +201,7 @@ def LegalInfo():
 			main()
 		
 		else:
-			print("  Invalid input..")
+			Color.pe("\n{R}  Invalid input...{W}")
 			time.sleep(2)
 			LegalInfo()
 
@@ -192,6 +209,9 @@ def LegalInfo():
 		main()
 
 
+############################################################
+#Print Credits
+#############################################################
 def Credits():
 	try:
 		template()
@@ -202,18 +222,20 @@ def Credits():
 			main()
 		
 		else:
-			print("  Invalid input..")
+			Color.pe("\n{R}  Invalid input...{W}")
 			time.sleep(2)
 			Credits()
 	except KeyboardInterrupt:
 		main()
 
 
-	
+###############################################################
+#Main Function
+################################################################	
 def main():
 	template()
-	print("  Where do you wanna go")
-	print("\n  [1] Lauch Wifi Jammer\n  [2] Legal Information\n  [3] Credits\n  [4] Quit")
+	print("  Where do you want to go")
+	print("\n  [1] Launch Wifi Jammer\n  [2] Legal Information\n  [3] Credits\n  [4] Quit")
 	inp = raw_input("\n  --->  ")
 	
 	if inp == '1':
@@ -226,14 +248,25 @@ def main():
 		Credits()
 		
 	elif inp == '4':
-		print("  Closing..")
+		template()
+		print("  Closing...")
 		time.sleep(2)
 		os.system('clear')
 		sys.exit()
 		
 	else:
-		print("  Invalid input..")
+		Color.pe("\n{!}{R} Invalid input{W}")
 		time.sleep(2)
 		main()
 		
 main()
+
+
+
+
+
+
+
+
+
+
